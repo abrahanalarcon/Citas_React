@@ -109,6 +109,7 @@ const Formulario = ({ pacientes, setPacientes, paciente , setPaciente}) => {
                     className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
                     value={nombre}
                     onChange={ (e) => setNombre(e.target.value)}
+                
                     />
                 </div>
                 {/* segundo div */}
@@ -118,7 +119,7 @@ const Formulario = ({ pacientes, setPacientes, paciente , setPaciente}) => {
                   <input
                     id="propietario"
                     type="text"
-                    placeholder="Nombre de la Propietario"
+                    placeholder="Nombre del propietario"
                     className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
                     value={propietario}
                     onChange={ (e) => setPropietario(e.target.value)}
@@ -131,7 +132,7 @@ const Formulario = ({ pacientes, setPacientes, paciente , setPaciente}) => {
                   <input
                     id="email"
                     type="email"
-                    placeholder="Email contacto Propietario"
+                    placeholder="correo@correo.com"
                     className="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
                     value={email}
                     onChange={ (e) => setEmail(e.target.value)}
@@ -165,8 +166,8 @@ const Formulario = ({ pacientes, setPacientes, paciente , setPaciente}) => {
                 {/* Boton */}
                 <input
                   type="submit"
-                  className="bg-indigo-600 w-full p-3 text-white uppercase font-bold
-                  hover:bg-indigo-700 cursor-pointer transition-color"
+                  className="bg-indigo-500 w-full p-3 text-white uppercase font-bold
+                  hover:bg-indigo-800 cursor-pointer transition-color"
                   value={ paciente.id ? 'Editar Paciente' : 'Agregar Paciente' }
                 />
                 
