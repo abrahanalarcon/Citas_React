@@ -11,6 +11,13 @@ const Formulario = ({ pacientes, setPacientes, paciente , setPaciente}) => {
      const [fecha, setFecha] = useState('');
      const [sintomas, setSintomas] = useState('');
 
+
+                           // Estados de errores para cada campo
+     const [errorNombre, setErrorNombre] = useState('');
+     const [errorPropietario, setErrorPropietario] = useState('');
+     const [errorEmail, setErrorEmail] = useState('');
+     const [errorFecha, setErrorFecha] = useState('');
+     const [errorSintomas, setErrorSintomas] = useState('')
      const [error, setError] = useState(false)
 
      useEffect(() => {
@@ -29,13 +36,62 @@ const Formulario = ({ pacientes, setPacientes, paciente , setPaciente}) => {
         const fecha = Date.now().toString(36)
         return random + fecha
      }
+
+
+     const validarFormulario = () => {
+      let hayErrores = false;
+  
+      // Validación del nombre
+      if (!nombre.trim()) {
+        setErrorNombre('El nombre es requerido.');
+        hayErrores = true;
+      } else {
+        setErrorNombre('');
+      }
+  
+      // Validación del propietario
+      if (!propietario.trim()) {
+        setErrorPropietario('El propietario es requerido.');
+        hayErrores = true;
+      } else {
+        setErrorPropietario('');
+      }
+  
+      // Validación del email
+      if (!email.trim()) {
+        setErrorEmail('El email es requerido.');
+        hayErrores = true;
+      } else {
+        setErrorEmail('');
+      }
+  
+      // Validación de la fecha
+      if (!fecha.trim()) {
+        setErrorFecha('La fecha es requerida.');
+        hayErrores = true;
+      } else {
+        setErrorFecha('');
+      }
+  
+      // Validación de los síntomas
+      if (!sintomas.trim()) {
+        setErrorSintomas('Los síntomas son requeridos.');
+        hayErrores = true;
+      } else {
+        setErrorSintomas('');
+      }
+  
+      return hayErrores;
+    };
       //  REGISTRO DE FUNCIO ENVIAR FORMULARIO
       const  handleSubmit = (e) => {
        e.preventDefault();
          
          //Validacion del formulario
-        if( [ nombre, propietario, email, fecha , sintomas ].includes('')){
-          console.log('Hay al menos un campo vacio');
+        // if( [ nombre, propietario, email, fecha , sintomas ].includes('')){
+        //   console.log('Hay al menos un campo vacio');
+
+        if (validarFormulario()) {
 
           setError(true)
           return;
@@ -91,7 +147,7 @@ const Formulario = ({ pacientes, setPacientes, paciente , setPaciente}) => {
                 className="bg-white shadow-md rounded-lg py-10 px-5 mb-10"
               >
                 {/* {error ? 'Si hay un error': 'No hay error'} */}
-                { error  && <Error mensaje='Todos los campos son obligatorios'/>}
+                {/* { error  && <Error mensaje='Todos los campos son obligatorios'/>} */}
                 {/* primer div */}
                 <div className="mb-5">
                   <label htmlFor="mascota" className="block text-gray-700 uppercase
@@ -105,6 +161,7 @@ const Formulario = ({ pacientes, setPacientes, paciente , setPaciente}) => {
                     onChange={ (e) => setNombre(e.target.value)}
                 
                     />
+                    {errorNombre && <Error mensaje={errorNombre} />}
                 </div>
                 {/* segundo div */}
                 <div className="mb-5">
@@ -118,6 +175,7 @@ const Formulario = ({ pacientes, setPacientes, paciente , setPaciente}) => {
                     value={propietario}
                     onChange={ (e) => setPropietario(e.target.value)}
                     />
+                    {errorPropietario && <Error mensaje={errorPropietario} />}
                 </div>
                 {/* tercer div */}
                 <div className="mb-5">
@@ -131,6 +189,7 @@ const Formulario = ({ pacientes, setPacientes, paciente , setPaciente}) => {
                     value={email}
                     onChange={ (e) => setEmail(e.target.value)}
                     />
+                    {errorEmail && <Error mensaje={errorEmail} />}
                 </div>
                 {/* 4to div */}
                 <div className="mb-5">
@@ -143,6 +202,7 @@ const Formulario = ({ pacientes, setPacientes, paciente , setPaciente}) => {
                     value={fecha}
                     onChange={ (e) => setFecha(e.target.value)}
                   />
+                  {errorFecha && <Error mensaje={errorFecha} />}
                 </div>
                 {/* 5 div */}
                 <div className="mb-5">
@@ -155,6 +215,7 @@ const Formulario = ({ pacientes, setPacientes, paciente , setPaciente}) => {
                     value={sintomas}
                     onChange={ (e) => setSintomas(e.target.value)}
                   />
+                  {errorSintomas && <Error mensaje={errorSintomas} />}
                    
                 </div>
                 {/* Boton */}

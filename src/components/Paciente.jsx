@@ -11,22 +11,22 @@ const Paciente = ({paciente, setPaciente, eliminarPaciente}) => {
 //       }
 //   }
 
-const handleEliminar = () => {
-  Swal.fire({
-    title: '¿Estás seguro?',
-    text: 'Deseas eliminar este paciente',
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Sí, eliminar',
-  }).then((result) => {
-    if (result.isConfirmed) {
-      eliminarPaciente(id);
-      Swal.fire('Eliminado', 'El paciente ha sido eliminado.', 'success');
-    }
-  });
-};
+    const handleEliminar = () => {
+      Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Deseas eliminar este paciente',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminar',
+       }).then((result) => {
+         if (result.isConfirmed) {
+            eliminarPaciente(id);
+           Swal.fire('Eliminado', 'El paciente ha sido eliminado.', 'success');
+         }
+       });
+     };
     return (
     <div className="mx-5 my-10 bg-white shadow-md px-5 py-10 rounded-xl">
          {/* first p */}
