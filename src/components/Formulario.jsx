@@ -3,6 +3,8 @@ import Error from './Error';
 
 
 const Formulario = ({ pacientes, setPacientes, paciente , setPaciente}) => {
+    //  DESTRUCTURING PARA LOS STATE
+    //  esto es para la modifiacion e interpretacion de cuando agregamos algo en los inputs
      const [nombre, setNombre] = useState('');
      const [propietario, setPropietario] = useState('');
      const [email, setEmail] = useState('');
@@ -27,7 +29,7 @@ const Formulario = ({ pacientes, setPacientes, paciente , setPaciente}) => {
         const fecha = Date.now().toString(36)
         return random + fecha
      }
-
+      //  REGISTRO DE FUNCIO ENVIAR FORMULARIO
       const  handleSubmit = (e) => {
        e.preventDefault();
          
@@ -66,22 +68,14 @@ const Formulario = ({ pacientes, setPacientes, paciente , setPaciente}) => {
           //Nuevo Registro
            objetoPaciente.id = generarId();
            setPacientes([...pacientes, objetoPaciente]);
-          
          }
-
-
-        //  console.log(objetoPaciente)
-
-        
-
         // Reiniciar el form
         setNombre('')
         setPropietario('')
         setEmail('')
         setFecha('')
         setSintomas('')
-         
-      }
+     }
      return (
         <div className="md:w-1/2 lg:w-2/5 mx-5">
              <h2 className="font-black text-3xl text-center">Seguimiento Pacientes
